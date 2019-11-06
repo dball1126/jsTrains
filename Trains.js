@@ -62,3 +62,6 @@ console.log("The number of trips starting at A and ending at C with exactly 4 st
 
 console.log("The length of the shortest route from A to C is: " + shortestRoute('A', 'C', iterGraph, objGraph));
 
+// Ninth Case:
+
+console.log("The length of the shortest route from B to B is: " + shortestRoute('B', 'B', iterGraph, objGraph));
