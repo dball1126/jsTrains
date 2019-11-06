@@ -1,4 +1,5 @@
 const maxNumTrips = require('./maxNumTrips');
+const exactNumTrips = require('./exactNumTrips');
 const fs = require('fs'); // readFile
 
 let sentence = (fs.readFileSync('./input.txt').toString());
@@ -48,4 +49,9 @@ if (objGraph['A']['E'] && objGraph['E']['D']) {
 // Sixth Case:
 console.log("The number of trips starting at C and ending at C with a maximum of 3 stops is: " + 
                                                                         maxNumTrips('C', 'C', iterGraph));
+
+// Seventh Case:
+
+console.log("The number of trips starting at A and ending at C with exactly 4 stops is: " +
+                                                                        exactNumTrips('A', 'C', iterGraph));
 
