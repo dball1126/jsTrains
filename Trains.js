@@ -1,5 +1,5 @@
-// readFile function is defined. 
-const fs = require('fs'); 
+const maxNumTrips = require('./maxNumTrips');
+const fs = require('fs'); // readFile
 
 let sentence = (fs.readFileSync('./input.txt').toString());
 if (sentence.includes('\n')) sentence = sentence.replace('\n', ",") // if input is multiple lines turn it into one string
@@ -20,7 +20,7 @@ sentence.split(",").forEach(e => {  // This is where we create a object graph.
 });
 
 // First Case:
-if (objGraph['A']['B']) {
+if (objGraph['A']['B'] && objGraph['B']['C']) {
     console.log("The distance of route A-B-C is: " + (parseInt(objGraph['A']['B']) + parseInt(objGraph['B']['C'])));
 } else { console.log ("NO SUCH ROUTE")}
 
@@ -30,12 +30,21 @@ if (objGraph['A']['D']) {
 } else { console.log("NO SUCH ROUTE") }
 
 // Third Case:
-if (objGraph['A']['D']) {
+if (objGraph['A']['D'] && objGraph['D']['C']) {
     console.log("The distance of route A-D-C is: " + (parseInt(objGraph['A']['D']) + parseInt(objGraph['D']['C'])));
 } else { console.log("NO SUCH ROUTE") }
 
 // Fourth Case:
 if (objGraph['A']['E'] && objGraph['E']['B'] && objGraph['B']['C'] && objGraph['C']['D']) {
-    console.log("The distance of route A-D-C is: " + (parseInt(objGraph['A']['E']) + parseInt(objGraph['E']['B']) +
+    console.log("The distance of route A-E-B-C-D is: " + (parseInt(objGraph['A']['E']) + parseInt(objGraph['E']['B']) +
                                                       parseInt(objGraph['B']['C']) + parseInt(objGraph['C']['D'])));
 } else { console.log("NO SUCH ROUTE") }
+
+// Fifth Case:
+if (objGraph['A']['E'] && objGraph['E']['D']) {
+    console.log("The distance of route A-E-D is: " + (parseInt(objGraph['A']['B']) + parseInt(objGraph['B']['C'])));
+} else { console.log("NO SUCH ROUTE") }
+
+// Sixth Case:
+console.log("The number of trips starting at C and ending at C with a maximum of 3 stops is: " + 
+                                                                        maxNumTrips('C', 'C', iterGraph));
