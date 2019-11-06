@@ -20,6 +20,16 @@ sentence.split(",").forEach(e => {  // This is where we create a object graph.
 });
 
 // First Case:
-if (objGraph['A'] && objGraph['A']['B']) {
+if (objGraph['A']['B']) {
     console.log("The distance of route A-B-C is: " + (parseInt(objGraph['A']['B']) + parseInt(objGraph['B']['C'])));
 } else { console.log ("NO SUCH ROUTE")}
+
+// Second Case:
+if (objGraph['A']['D']) {
+    console.log("The distance of route A-D is: " + (parseInt(objGraph['A']['D'])));
+} else { console.log("NO SUCH ROUTE") }
+
+// Third Case:
+if (objGraph['A']['D']) {
+    console.log("The distance of route A-D-C is: " + (parseInt(objGraph['A']['D']) + parseInt(objGraph['D']['C'])));
+} else { console.log("NO SUCH ROUTE") }
