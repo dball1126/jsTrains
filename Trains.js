@@ -1,10 +1,13 @@
 const maxNumTrips = require('./maxNumTrips');
 const exactNumTrips = require('./exactNumTrips');
+const shortestRoute = require('./shortestRoute');
 const fs = require('fs'); // readFile
 
 let sentence = (fs.readFileSync('./input.txt').toString());
 if (sentence.includes('\n')) sentence = sentence.replace('\n', ",") // if input is multiple lines turn it into one string
-let iterGraph = {};
+const iterGraph = {};
+const objGraph = {};
+
 sentence.split(",").forEach(e => {  // This is where we create a Iterable graph.
     let key = e[0], innerKey = e[1], innerVal = e[2];
 
@@ -13,7 +16,7 @@ sentence.split(",").forEach(e => {  // This is where we create a Iterable graph.
         obj[innerKey] = innerVal;
         iterGraph[key].push(obj)
 });
-let objGraph = {};
+
 sentence.split(",").forEach(e => {  // This is where we create a object graph.
     let key = e[0], innerKey = e[1], innerVal = e[2];
     if (objGraph[key] === undefined) objGraph[key] = {}
@@ -48,10 +51,14 @@ if (objGraph['A']['E'] && objGraph['E']['D']) {
 
 // Sixth Case:
 console.log("The number of trips starting at C and ending at C with a maximum of 3 stops is: " + 
-                                                                        maxNumTrips('C', 'C', iterGraph));
+                                                                        maxNumTrips('C', 'C', iterGraph, "upTo"));
 
 // Seventh Case:
 
 console.log("The number of trips starting at A and ending at C with exactly 4 stops is: " +
                                                                         exactNumTrips('A', 'C', iterGraph));
+
+// Eight Case:
+
+console.log("The length of the shortest route from A to C is: " + shortestRoute('A', 'C', iterGraph, objGraph));
 
