@@ -33,3 +33,9 @@ if (objGraph['A']['D']) {
 if (objGraph['A']['D']) {
     console.log("The distance of route A-D-C is: " + (parseInt(objGraph['A']['D']) + parseInt(objGraph['D']['C'])));
 } else { console.log("NO SUCH ROUTE") }
+
+// Fourth Case:
+if (objGraph['A']['E'] && objGraph['E']['B'] && objGraph['B']['C'] && objGraph['C']['D']) {
+    console.log("The distance of route A-D-C is: " + (parseInt(objGraph['A']['E']) + parseInt(objGraph['E']['B']) +
+                                                      parseInt(objGraph['B']['C']) + parseInt(objGraph['C']['D'])));
+} else { console.log("NO SUCH ROUTE") }
