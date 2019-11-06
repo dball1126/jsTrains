@@ -48,3 +48,4 @@ if (objGraph['A']['E'] && objGraph['E']['D']) {
 // Sixth Case:
 console.log("The number of trips starting at C and ending at C with a maximum of 3 stops is: " + 
                                                                         maxNumTrips('C', 'C', iterGraph));
+
