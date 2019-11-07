@@ -31,8 +31,8 @@ describe('Case 1: ', () => {
         expect(badCase).to.eql(trains.caseOne())
         
     });
-    it(`The distance of route A-B-C is non exisitent: `, () => {
-        badCase = trains.caseOne('Z', 'Z', 'C', objGraph);        
+    it(`The distance of route K-J-C is non-existent: `, () => {
+        badCase = trains.caseOne('K', 'J', 'C', objGraph);        
         expect(badCase).to.eql("NO SUCH ROUTE")
     });
 })
@@ -51,8 +51,8 @@ describe('Case 2: ', () => {
         expect(badCase).to.eql(trains.caseTwo())
     });
 
-    it(`The distance of route A-D is unknown: `, () => {
-        badCase = trains.caseTwo('Z', 'Z', objGraph);
+    it(`The distance of route K-Z is non-existent: `, () => {
+        badCase = trains.caseTwo('K', 'Z', objGraph);
         expect(badCase).to.eql("NO SUCH ROUTE")
     });
 
@@ -74,7 +74,7 @@ describe('Case 3: ', () => {
         expect(badCase).to.eql(trains.caseThree())
 
     });
-    it(`The distance of route A-D-C is non exisitent: `, () => {
+    it(`The distance of route Z-Z-C is non-existent: `, () => {
         badCase = trains.caseThree('Z', 'Z', 'C', objGraph);
         expect(badCase).to.eql("NO SUCH ROUTE")
     });
@@ -94,8 +94,8 @@ describe('Case 4: ', () => {
         expect(badCase).to.eql(trains.caseFour())
 
     });
-    it(`The distance of route A-E-B-C-D is non exisitent: `, () => {
-        badCase = trains.caseFour('Z', 'Z', 'G','L', objGraph);
+    it(`The distance of route Z-E-B-M-O is non-existent: `, () => {
+        badCase = trains.caseFour('Z', 'E', 'B','M', 'O', objGraph);
         expect(badCase).to.eql("NO SUCH ROUTE")
     });
 })
@@ -109,8 +109,8 @@ describe('Case 5: ', () => {
 
     });
 
-    it(`The distance of route A-E-D is non exisitent: `, () => {
-        badCase = trains.caseFive('Z', 'Z', 'G','L', objGraph);
+    it(`The distance of route A-W-D is non-existent: `, () => {
+        badCase = trains.caseFive('A', 'W', 'D', objGraph);
         expect(badCase).to.eql("NO SUCH ROUTE")
     });
 })
@@ -129,8 +129,8 @@ describe('Case 6: ', () => {
         expect(badCase).to.eql(trains.caseSix())
     });
 
-    it('The number of trips starting at C and ending at C with a maximum of 3 stops is non exisitent: ', () => {
-        badCase = trains.caseSix('Z', 'Z', iterGraph, "upTo");
+    it('The number of trips starting at M and ending at I with a maximum of 3 stops is zero: ', () => {
+        badCase = trains.caseSix('M', 'I', iterGraph, "upTo");
         expect(badCase).to.equal(0)
     });
 })
@@ -149,9 +149,49 @@ describe('Case 7: ', () => {
         expect(badCase).to.eql(trains.caseSeven())
     });
 
-    it("The number of trips starting at A and ending at C with exactly 4 stops is: ", () => {
+    it("The number of trips starting at Z and ending at Z with exactly 4 stops is zero: ", () => {
         badCase = trains.caseSeven('Z', 'Z', iterGraph, "exact");
         expect(badCase).to.equal(0)
+    });
+})
+
+describe('Case 8: ', () => {
+    let trains;
+
+    beforeEach(() => {
+        trains = new Trains;
+        badCase = null;
+
+    });
+
+    it("The length of the shortest route from A to C is: ", () => {
+        badCase = trains.caseEight('A', 'C', iterGraph, objGraph);
+        expect(badCase).to.eql(trains.caseEight())
+    });
+
+    it("The length of the shortest route from Z to J is zero: ", () => {
+        badCase = trains.caseEight('Z', 'J', iterGraph, objGraph);
+        expect(badCase).to.equal(0);
+    });
+})
+
+describe('Case 9: ', () => {
+    let trains;
+
+    beforeEach(() => {
+        trains = new Trains;
+        badCase = null;
+
+    });
+
+    it("The length of the shortest route from B to B is: ", () => {
+        badCase = trains.caseNine('B', 'B', iterGraph, objGraph);
+        expect(badCase).to.eql(trains.caseNine())
+    });
+
+    it("The length of the shortest route from Z to Z is zero: ", () => {
+        badCase = trains.caseNine('Z', 'Z', iterGraph, objGraph);
+        expect(badCase).to.equal(0);
     });
 })
 

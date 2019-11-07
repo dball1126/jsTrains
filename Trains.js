@@ -84,15 +84,15 @@ class Trains {
     }
         
 // Eight Case:
-    caseEight(){
-
-        console.log("The length of the shortest route from A to C is: " + shortestRoute('A', 'C', iterGraph, objGraph));
+    caseEight(node1 = 'A', node2 = 'C', graphIter = iterGraph, graphObj = objGraph){
+        if (!graphIter[node1]) return 0;
+        return ("The length of the shortest route from A to C is: " + shortestRoute(node1, node2, graphIter, graphObj));
     }
         
-        // Ninth Case:
-    caseNine(){
-
-        console.log("The length of the shortest route from B to B is: " + shortestRoute('B', 'B', iterGraph, objGraph));
+// Ninth Case:
+    caseNine(node1 = 'B', node2 = 'B', graphIter = iterGraph, graphObj = objGraph){
+        if (!graphIter[node1]) return 0;
+        return ("The length of the shortest route from B to B is: " + shortestRoute(node1, node2, graphIter, graphObj));
     }
         
         // Tenth Case:
