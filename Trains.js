@@ -24,77 +24,96 @@ sentence.split(",").forEach(e => {  // This is where we create a object graph.
     objGraph[key][innerKey] = innerVal 
 });
 
+
+class Trains {
+
 // First Case:
-if (objGraph['A']['B'] && objGraph['B']['C']) {
-    console.log("The distance of route A-B-C is: " + (parseInt(objGraph['A']['B']) + parseInt(objGraph['B']['C'])));
-} else { console.log ("NO SUCH ROUTE")}
+    caseOne(node1 = 'A', node2 = 'B', node3 = 'C', graph = objGraph){
+        if (!graph[node1] || !graph[node2] || !graph[node3]) return ("NO SUCH ROUTE")
+        if (graph[node1][node2] && graph[node2][node3]) {
+            return ('The distance of route A-B-C is valid: ' + 
+                        (parseInt(graph[node1][node2]) + parseInt(graph[node2][node3])));
+        } else { return (("NO SUCH ROUTE")) } 
+    }
 
 // Second Case:
-if (objGraph['A']['D']) {
-    console.log("The distance of route A-D is: " + (parseInt(objGraph['A']['D'])));
-} else { console.log("NO SUCH ROUTE") }
+    caseTwo(node1 = 'A', node2 = 'D', graph = objGraph){
+        if (!graph[node1]) return ("NO SUCH ROUTE");
+        if (graph[node1][node2]) {
+            return ('The distance of route A-D is valid: ' + parseInt(graph[node1][node2]));
+        } else { return ("NO SUCH ROUTE") }
+    }
 
 // Third Case:
-if (objGraph['A']['D'] && objGraph['D']['C']) {
-    console.log("The distance of route A-D-C is: " + (parseInt(objGraph['A']['D']) + parseInt(objGraph['D']['C'])));
-} else { console.log("NO SUCH ROUTE") }
+    caseThree(node1 = 'A', node2 = 'D', node3 = 'C', graph = objGraph){
+
+        if (objGraph[node1][node2] && objGraph[node2][node3]) {
+            console.log("The distance of route A-D-C is: " + (parseInt(objGraph[node1][node2]) + parseInt(objGraph[node2][node3])));
+        } else { console.log("NO SUCH ROUTE") }
+    }
 
 // Fourth Case:
-if (objGraph['A']['E'] && objGraph['E']['B'] && objGraph['B']['C'] && objGraph['C']['D']) {
-    console.log("The distance of route A-E-B-C-D is: " + (parseInt(objGraph['A']['E']) + parseInt(objGraph['E']['B']) +
-                                                      parseInt(objGraph['B']['C']) + parseInt(objGraph['C']['D'])));
-} else { console.log("NO SUCH ROUTE") }
+    caseFour(){
 
+        if (objGraph['A']['E'] && objGraph['E']['B'] && objGraph['B']['C'] && objGraph['C']['D']) {
+            console.log("The distance of route A-E-B-C-D is: " + (parseInt(objGraph['A']['E']) + parseInt(objGraph['E']['B']) +
+            parseInt(objGraph['B']['C']) + parseInt(objGraph['C']['D'])));
+        } else { console.log("NO SUCH ROUTE") }
+    }
+        
 // Fifth Case:
-if (objGraph['A']['E'] && objGraph['E']['D']) {
-    console.log("The distance of route A-E-D is: " + (parseInt(objGraph['A']['B']) + parseInt(objGraph['B']['C'])));
-} else { console.log("NO SUCH ROUTE") }
+    caseFive(){
 
+        if (objGraph['A']['E'] && objGraph['E']['D']) {
+            console.log("The distance of route A-E-D is: " + (parseInt(objGraph['A']['B']) + parseInt(objGraph['B']['C'])));
+        } else { console.log("NO SUCH ROUTE") }
+    }
+        
 // Sixth Case:
-console.log("The number of trips starting at C and ending at C with a maximum of 3 stops is: " + 
-                                                                        maxNumTrips('C', 'C', iterGraph, "upTo"));
+    caseSix(){
 
-// Seventh Case:
+        console.log("The number of trips starting at C and ending at C with a maximum of 3 stops is: " + 
+        maxNumTrips('C', 'C', iterGraph, "upTo"));
+    }
+        
+        // Seventh Case:
+    caseSeven(){
 
-console.log("The number of trips starting at A and ending at C with exactly 4 stops is: " +
-                                                                        exactNumTrips('A', 'C', iterGraph));
-
+        console.log("The number of trips starting at A and ending at C with exactly 4 stops is: " +
+        exactNumTrips('A', 'C', iterGraph));
+    }
+        
 // Eight Case:
+    caseEight(){
 
-console.log("The length of the shortest route from A to C is: " + shortestRoute('A', 'C', iterGraph, objGraph));
+        console.log("The length of the shortest route from A to C is: " + shortestRoute('A', 'C', iterGraph, objGraph));
+    }
+        
+        // Ninth Case:
+    caseNine(){
 
-// Ninth Case:
+        console.log("The length of the shortest route from B to B is: " + shortestRoute('B', 'B', iterGraph, objGraph));
+    }
+        
+        // Tenth Case:
+    caseTen(){
 
-console.log("The length of the shortest route from B to B is: " + shortestRoute('B', 'B', iterGraph, objGraph));
+        console.log("The number of the different routes from C to C with a distance of less than 30 is: " +
+        differentRoutesDistance('C', 'C', iterGraph, "type"))
+    }
+        
+}
+let train = new Trains();
 
-// Tenth Case:
+console.log(train.caseOne());
+console.log(train.caseTwo());
+console.log(train.caseThree());
+console.log(train.caseFour());
+console.log(train.caseFive());
+console.log(train.caseSix());
+console.log(train.caseSeven());
+console.log(train.caseEight());
+console.log(train.caseNine());
+console.log(train.caseTen());
 
-console.log("The number of the different routes from C to C with a distance of less than 30 is: " +
-                                                                        differentRoutesDistance('C', 'C', iterGraph, "type"))
-
-
-
-// function differentRoutesDistance(start, end, graph) {
-//     const reducer = (acc, curr) => parseInt(acc) + parseInt(curr);
-//     function trips(node, visited, end, distance) {
-//         graph[node].forEach(n => {
-//             let key = Object.keys(n)[0];
-//             let val = Object.values(n)[0];
-//             if (distance.length && parseInt(distance.reduce(reducer)) < 30) return;
-            
-//             if (key !== end) trips(key, [...visited, key], end, [...distance, val])
-
-//             let trip = visited.join("");
-//             routes.push(trip);
-//             if (distance.length) distances.push(parseInt(distance.reduce(reducer)))
-//             if (visited[visited.length - 1] === end) {
-//             }
-//         });
-//     }
-//     let distance = [];
-//     const routes = [];
-//     const distances = [];
-//     trips(start, visited = [], end, distance);
-//     console.log(distances);
-//     return routes;
-// }
+module.exports = Trains;

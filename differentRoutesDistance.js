@@ -4,7 +4,11 @@ function differentRoutesDistance(start, end, graph, type) {
         graph[node].forEach(n => {
             let key = Object.keys(n)[0];
             let val = Object.values(n)[0];
-            if (visited.length > 10 && key === end) return;
+            // if (distances.length && key === end && parseInt(distances.reduce(reducer)) < 30) answer.push(parseInt(distances.reduce(reducer))) 
+            if (distances.length && parseInt(distances.reduce(reducer)) > 29) {
+                // console.log(parseInt(distances.reduce(reducer)));
+                return;
+            }
 
             trips(key, [...visited, key], end, [...distances, val])
 
@@ -14,12 +18,12 @@ function differentRoutesDistance(start, end, graph, type) {
                 routes.push(trip);}
         });
     }
+    
     const allDistances = [];
-    let distances = [];
     const routes = [];
-    trips(start, visited = [], end, distances);
-    console.log(allDistances.filter(e => e < 30).length)
-    return routes;
+    trips(start, visited = [], end, distances = []);
+    console.log(allDistances)
+    return allDistances.filter(e => e < 30).length;
 }
 
 module.exports = differentRoutesDistance;
