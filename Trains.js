@@ -1,6 +1,7 @@
 const maxNumTrips = require('./maxNumTrips');
 const exactNumTrips = require('./exactNumTrips');
 const shortestRoute = require('./shortestRoute');
+const differentRoutesDistance = require('./differentRoutesDistance');
 const fs = require('fs'); // readFile
 
 let sentence = (fs.readFileSync('./input.txt').toString());
@@ -65,3 +66,35 @@ console.log("The length of the shortest route from A to C is: " + shortestRoute(
 // Ninth Case:
 
 console.log("The length of the shortest route from B to B is: " + shortestRoute('B', 'B', iterGraph, objGraph));
+
+// Tenth Case:
+
+console.log("The number of the different routes from C to C with a distance of less than 30 is: " +
+                                                                        differentRoutesDistance('C', 'C', iterGraph, "type"))
+
+
+
+// function differentRoutesDistance(start, end, graph) {
+//     const reducer = (acc, curr) => parseInt(acc) + parseInt(curr);
+//     function trips(node, visited, end, distance) {
+//         graph[node].forEach(n => {
+//             let key = Object.keys(n)[0];
+//             let val = Object.values(n)[0];
+//             if (distance.length && parseInt(distance.reduce(reducer)) < 30) return;
+            
+//             if (key !== end) trips(key, [...visited, key], end, [...distance, val])
+
+//             let trip = visited.join("");
+//             routes.push(trip);
+//             if (distance.length) distances.push(parseInt(distance.reduce(reducer)))
+//             if (visited[visited.length - 1] === end) {
+//             }
+//         });
+//     }
+//     let distance = [];
+//     const routes = [];
+//     const distances = [];
+//     trips(start, visited = [], end, distance);
+//     console.log(distances);
+//     return routes;
+// }
