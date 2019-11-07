@@ -189,8 +189,27 @@ describe('Case 9: ', () => {
         expect(badCase).to.eql(trains.caseNine())
     });
 
-    it("The length of the shortest route from Z to Z is zero: ", () => {
-        badCase = trains.caseNine('Z', 'Z', iterGraph, objGraph);
+    it("The length of the shortest route from Z to J is zero: ", () => {
+        badCase = trains.caseNine('Z', 'J', iterGraph, objGraph);
+        expect(badCase).to.equal(0);
+    });
+})
+
+describe('Case 10: ', () => {
+    let trains;
+
+    beforeEach(() => {
+        trains = new Trains;
+        badCase = null;
+    });
+
+    it("The number of the different routes from C to C with a distance of less than 30 is: ", () => {
+        badCase = trains.caseTen('C', 'C', iterGraph, "type");
+        expect(badCase).to.eql(trains.caseTen())
+    });
+
+    it("The number of the different routes from G to J with a distance of less than 30 is zero: ", () => {
+        badCase = trains.caseTen('G', 'J', iterGraph, "type");
         expect(badCase).to.equal(0);
     });
 })

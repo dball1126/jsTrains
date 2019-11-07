@@ -73,14 +73,14 @@ class Trains {
     caseSix(node1 = 'C', node2 = 'C', graph = iterGraph, type = "upTo"){
         if (!graph[node1]) return 0;
         return ("The number of trips starting at C and ending at C with a maximum of 3 stops is: " + 
-        maxNumTrips(node1, node2, graph, type));
+                                                            maxNumTrips(node1, node2, graph, type));
     }
         
 // Seventh Case:
     caseSeven(node1 = 'A', node2 = 'C', graph = iterGraph){
         if (!graph[node1]) return 0;
         return ("The number of trips starting at A and ending at C with exactly 4 stops is: " +
-        exactNumTrips(node1, node2, iterGraph));
+                                                        exactNumTrips(node1, node2, iterGraph));
     }
         
 // Eight Case:
@@ -95,14 +95,15 @@ class Trains {
         return ("The length of the shortest route from B to B is: " + shortestRoute(node1, node2, graphIter, graphObj));
     }
         
-        // Tenth Case:
-    caseTen(){
-
-        console.log("The number of the different routes from C to C with a distance of less than 30 is: " +
-        differentRoutesDistance('C', 'C', iterGraph, "type"))
+// Tenth Case:
+    caseTen(node1 = 'C', node2 = 'C', graphIter = iterGraph, type = "type"){
+        if (!graphIter[node1]) return 0;
+        return ("The number of the different routes from C to C with a distance of less than 30 is: " +
+                                                differentRoutesDistance(node1, node2, graphIter, type))
     }
         
 }
+
 let train = new Trains();
 
 console.log(train.caseOne());
@@ -115,5 +116,6 @@ console.log(train.caseSeven());
 console.log(train.caseEight());
 console.log(train.caseNine());
 console.log(train.caseTen());
+
 
 module.exports = Trains;

@@ -22,7 +22,6 @@ function differentRoutesDistance(start, end, graph, type) {
     const allDistances = [];
     const routes = [];
     trips(start, visited = [], end, distances = []);
-    console.log(allDistances)
     return allDistances.filter(e => e < 30).length;
 }
 
