@@ -1,5 +1,5 @@
 function exactNumTrips(start, end, graph) {
-    const reduceer = (acc, curr) => acc + curr;
+    const reducer = (acc, curr) => acc + curr;
     function trips(node, visited, end, distance) {
         graph[node].forEach(n => {
             let key = Object.keys(n)[0];

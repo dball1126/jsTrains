@@ -46,41 +46,41 @@ class Trains {
 
 // Third Case:
     caseThree(node1 = 'A', node2 = 'D', node3 = 'C', graph = objGraph){
-
-        if (objGraph[node1][node2] && objGraph[node2][node3]) {
-            console.log("The distance of route A-D-C is: " + (parseInt(objGraph[node1][node2]) + parseInt(objGraph[node2][node3])));
-        } else { console.log("NO SUCH ROUTE") }
+        if (!graph[node1] || !graph[node2]) return "NO SUCH ROUTE";
+        if (graph[node1][node2] && graph[node2][node3]) {
+            return ("The distance of route A-D-C is: " + (parseInt(graph[node1][node2]) + parseInt(graph[node2][node3])));
+        } else { return "NO SUCH ROUTE" }
     }
 
 // Fourth Case:
-    caseFour(){
-
-        if (objGraph['A']['E'] && objGraph['E']['B'] && objGraph['B']['C'] && objGraph['C']['D']) {
-            console.log("The distance of route A-E-B-C-D is: " + (parseInt(objGraph['A']['E']) + parseInt(objGraph['E']['B']) +
-            parseInt(objGraph['B']['C']) + parseInt(objGraph['C']['D'])));
-        } else { console.log("NO SUCH ROUTE") }
+    caseFour(node1='A', node2='E', node3='B', node4='C', node5='D', graph = objGraph){
+        if (!graph[node1] || !graph[node2] || !graph[node3]) return "NO SUCH ROUTE";
+        if (graph[node1][node2] && graph[node2][node3] && graph[node3][node4] && graph[node4][node5]) {
+            return ("The distance of route A-E-B-C-D is: " + (parseInt(graph[node1][node2]) + parseInt(graph[node2][node3]) +
+            parseInt(graph[node3][node4]) + parseInt(graph[node4][node5])));
+        } else { return "NO SUCH ROUTE" };
     }
         
 // Fifth Case:
-    caseFive(){
-
-        if (objGraph['A']['E'] && objGraph['E']['D']) {
-            console.log("The distance of route A-E-D is: " + (parseInt(objGraph['A']['B']) + parseInt(objGraph['B']['C'])));
-        } else { console.log("NO SUCH ROUTE") }
+    caseFive(node1 = 'A', node2 = 'E', node3 = 'D', graph = objGraph){
+        if (!graph[node1] || !graph[node2]) return "NO SUCH ROUTE";
+        if (graph[node1][node2] && graph[node2][node3]) {
+            return ("The distance of route A-E-D is: " + (parseInt(graph[node1][node2]) + parseInt(graph[node2][node3])));
+        } else { return ("NO SUCH ROUTE") }
     }
         
 // Sixth Case:
-    caseSix(){
-
-        console.log("The number of trips starting at C and ending at C with a maximum of 3 stops is: " + 
-        maxNumTrips('C', 'C', iterGraph, "upTo"));
+    caseSix(node1 = 'C', node2 = 'C', graph = iterGraph, type = "upTo"){
+        if (!graph[node1]) return 0;
+        return ("The number of trips starting at C and ending at C with a maximum of 3 stops is: " + 
+        maxNumTrips(node1, node2, graph, type));
     }
         
-        // Seventh Case:
-    caseSeven(){
-
-        console.log("The number of trips starting at A and ending at C with exactly 4 stops is: " +
-        exactNumTrips('A', 'C', iterGraph));
+// Seventh Case:
+    caseSeven(node1 = 'A', node2 = 'C', graph = iterGraph){
+        if (!graph[node1]) return 0;
+        return ("The number of trips starting at A and ending at C with exactly 4 stops is: " +
+        exactNumTrips(node1, node2, iterGraph));
     }
         
 // Eight Case:

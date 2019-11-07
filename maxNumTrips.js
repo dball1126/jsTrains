@@ -1,5 +1,4 @@
 function maxNumTrips (start, end, graph, type) {
-    
     function trips  (node, visited, end) {
         graph[node].forEach(n => {
             let key = Object.keys(n)[0];  // Create a key from a JavaScript object use extract the first element
